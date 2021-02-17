@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <form action="" mothod='POST'>
+        {{ form.hidden_tag() }}
+        <legend>Logingingdf uinb sd</legend>
+        {{ form.name() }}
+        {{ form.password() }}
+        {{ form.remember() }}
+        {{ form.submit() }}
+    </form>
+</div>
+
+{% endblock content %}

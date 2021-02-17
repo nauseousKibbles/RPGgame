@@ -9,3 +9,11 @@ class SignUpForm(FlaskForm):
 
 
     submit = SubmitField('Submit')
+
+
+class LoginForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    password = StringField('Password', validators=[DataRequired()])
+    remember = BooleanField('Remember Me')
+
+    submit = SubmitField('Login')
