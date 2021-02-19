@@ -1,4 +1,4 @@
-from basicflasksetup import db, login_manager
+from RPGgame import db, login_manager
 from flask_login import UserMixin
 
 @login_manager.user_loader
