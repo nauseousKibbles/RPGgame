@@ -1,20 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
-<p>Current User: {{ current_user.name }}</p>
-<a href="{{ url_for('logout') }}">Logout</a>
-<a href="{{ url_for('login') }}">Login</a>
-<a href="{{ url_for('signup') }}">Signup</a>
-<br>
-Current Users:
-{% for user in users %}
-<div class="users">
-    
-        Name:
-        {{ user.name }}
-        Password:
-        {{ user.password }}
 
-    
-</div>
-{% endfor %}
+<br>
+{% if anon %}
+<p>You can sign up for an account if you click the signup button above.</p>
+<p>Or you can login if you have an account.</p>
+{% endif %}
+{% if not anon %}
+<p>VIDEO GAME TIME</p>
+
+
+
+
+
+{% endif %}
 {% endblock content %}
