@@ -9,21 +9,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     
 </head>
-<body style="padding: 5px;">
-<!-- NAVIGATION BAR LOL HAHAH BIG CHUNGUS -->
-<div class="flash">
-{% with messages = get_flashed_messages() %}
-   {% if messages %}
-      {% for message in messages %}
-      <div class="alert alert-danger" role="alert">
-         <p>{{ message }}</p>
-        </div>
-      {% endfor %}
-   {% endif %}
-{% endwith %}
-</div>
 
-    <nav>
+<body {% if current_user.darkmode %}class="bg-dark text-light"{% endif %} style="padding: 5px;">
+<!-- NAVIGATION BAR LOL HAHAH BIG CHUNGUS -->
+    <div class="flash">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    </div>
+
+    <nav class="">
         <div class="dropdown">
             <a class="btn btn-primary" href="{{ url_for('home') }}">Home</a>
             <a class="btn btn-primary" href="{{ url_for('showlist') }}">List</a>
@@ -34,6 +35,7 @@
             <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
             <li><a class="dropdown-item" href="{{ url_for('login') }}">Login</a></li>
             <li><a class="dropdown-item" href="{{ url_for('signup') }}">Signup</a></li>
+            <li><a class="dropdown-item {% if not current_user.is_authenticated %}disabled{% endif %}" href="{{ url_for('darkmode') }}">Darkmode</a></li>
             </ul>
             
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -44,16 +46,20 @@
             <li><a class="dropdown-item {% if not current_user.is_authenticated %}disabled{% endif %}" href="{{ url_for('hunt') }}">Chop</a></li>
             <li><a class="dropdown-item {% if not current_user.is_authenticated %}disabled{% endif %}" href="{{ url_for('hunt') }}">Fish</a></li>
             </ul>
+            {% if not current_user.is_anonymous %}
+            <a class="btn btn-primary">Current User: {{ current_user.name }}</a>
+            {% endif %}
             
         </div>
     </nav>
-    {% if not current_user.is_anonymous %}
-    <p>Current User: {{ current_user.name }}</p>
-    {% endif %}
+    
 <!-- END OF BIG CHUNGUS NAVIGATION BAR -->
+<div class="{% if current_user.darkmode %}text-light{% endif %}">
     {% block content %}
 
     {% endblock content %}
+</div>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 

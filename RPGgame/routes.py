@@ -100,3 +100,14 @@ def destroy():
     db.drop_all()
     db.session.commit()
     return redirect(url_for('home'))
+
+@app.route("/darkmode")
+def darkmode():
+    if current_user.darkmode:
+        current_user.darkmode = False
+        db.session.commit()
+        return redirect(url_for('home'))
+    if not current_user.darkmode:
+        current_user.darkmode = True
+        db.session.commit()
+        return redirect(url_for('home'))
