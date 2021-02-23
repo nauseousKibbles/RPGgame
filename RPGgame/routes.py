@@ -2,6 +2,7 @@ from flask import render_template, url_for, redirect, request, flash
 from RPGgame import app, db, bcrypt
 from RPGgame.forms import SignupForm, LoginForm
 from RPGgame.models import User
+import RPGgame.game.list
 from flask_login import login_user, current_user, logout_user, login_required
 
 import random
@@ -14,12 +15,16 @@ def hunt():
     if not current_user.is_authenticated:
         flash("Please login before trying to play the game.")
         return redirect(url_for('home'))
+    # Random Monster
+    monster = random.choice(RPGgame.game.list.monsters)
+    # Actual database changing
     healthchange = random.randint(0,10)
     coinsgained = random.randint(0,10)
     current_user.health += healthchange
     current_user.coins += coinsgained
     db.session.commit()
-    return render_template("game/hunt.html", healthchange=healthchange, coinsgained=coinsgained)
+
+    return render_template("game/hunt.html", healthchange=healthchange, coinsgained=coinsgained, monster=monster)
 
 
 # ADMIN STUFF LOLLOOLLOL----------------------------------------------------------------------------
