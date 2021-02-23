@@ -1,18 +1,47 @@
-from flask import render_template, url_for, redirect, request
+from flask import render_template, url_for, redirect, request, flash
 from RPGgame import app, db, bcrypt
 from RPGgame.forms import SignupForm, LoginForm
 from RPGgame.models import User
 from flask_login import login_user, current_user, logout_user, login_required
 
+import random
 
 
+# VIDEO GAME TIME YEAH BOIII
+
+@app.route("/hunt")
+def hunt():
+    if not current_user.is_authenticated:
+        flash("Please login before trying to play the game.")
+        return redirect(url_for('home'))
+    healthchange = random.randint(0,10)
+    coinsgained = random.randint(0,10)
+    current_user.health += healthchange
+    current_user.coins += coinsgained
+    db.session.commit()
+    return render_template("game/hunt.html", healthchange=healthchange, coinsgained=coinsgained)
+
+
+# ADMIN STUFF LOLLOOLLOL----------------------------------------------------------------------------
+@app.route("/change/<type>/<int:id>/<ammount>")
+def change(type, id, ammount):
+    change_user = User.query.get_or_404(id)
+    if type == "coins":
+        change_user.coins = int(ammount)
+    if type == "health":
+        change_user.health = int(ammount)
+    if type == "defence":
+        change_user.defence = int(ammount)
+    db.session.commit()
+    return redirect(url_for('home'))
+
+# ------------------------------------------------------------------------------------------------------
 # ONLY BORING STUFF BEYOND THIS POINT WARNING!!!!!! WARNING!!!!! -------------------------------------
 @app.route("/")
 @app.route('/home')
 def home():
     users = User.query.all()
-    anon = current_user.is_anonymous
-    return render_template("home.html", users=users, anon=anon)
+    return render_template("home.html", users=users)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():

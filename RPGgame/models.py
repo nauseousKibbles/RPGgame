@@ -12,6 +12,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
     health = db.Column(db.Integer, default=100)
     defence = db.Column(db.Integer, default=1)
+    coins = db.Column(db.Integer, default=100)
 
     def __repr__(self):
        return f"User('{self.name}', '{self.password}', '{self.id}')"

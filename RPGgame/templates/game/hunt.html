@@ -7,7 +7,14 @@
 <p>Or you can login if you have an account.</p>
 {% endif %}
 {% if not current_user.is_anonymous %}
-<p>VIDEO GAME TIME</p>
+
+
+
+<p>You gained {{ healthchange }} health points.</p>
+<p>You gains {{ coinsgained }} coins.</p>
+
+Current Health: {{ current_user.health }}
+Current Coins: {{ current_user.coins }}
 
 
 
