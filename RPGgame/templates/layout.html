@@ -35,6 +35,7 @@
             <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
             <li><a class="dropdown-item" href="{{ url_for('login') }}">Login</a></li>
             <li><a class="dropdown-item" href="{{ url_for('signup') }}">Signup</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item {% if not current_user.is_authenticated %}disabled{% endif %}" href="{{ url_for('darkmode') }}">Darkmode</a></li>
             </ul>
             
