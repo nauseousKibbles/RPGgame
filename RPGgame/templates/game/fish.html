@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<br>
+{% if current_user.is_anonymous %}
+<p>You can sign up for an account if you click the signup button above.</p>
+<p>Or you can login if you have an account.</p>
+{% endif %}
+{% if not current_user.is_anonymous %}
+
+
+<p>
+Added {{ fish_ammount }} {{ fish_type }} to your inventory.
+</p>
+
+
+
+
+
+{% endif %}
+{% endblock content %}

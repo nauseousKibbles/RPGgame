@@ -45,7 +45,7 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><a class="dropdown-item {% if not current_user.is_authenticated %}disabled{% endif %}" href="{{ url_for('hunt') }}">Hunt</a></li>
             <li><a class="dropdown-item {% if not current_user.is_authenticated %}disabled{% endif %}" href="{{ url_for('hunt') }}">Chop</a></li>
-            <li><a class="dropdown-item {% if not current_user.is_authenticated %}disabled{% endif %}" href="{{ url_for('hunt') }}">Fish</a></li>
+            <li><a class="dropdown-item {% if not current_user.is_authenticated %}disabled{% endif %}" href="{{ url_for('fish') }}">Fish</a></li>
             </ul>
             {% if not current_user.is_anonymous %}
             <a class="btn btn-primary">Current User: {{ current_user.name }}</a>

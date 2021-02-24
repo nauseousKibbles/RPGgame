@@ -26,6 +26,17 @@ def hunt():
 
     return render_template("game/hunt.html", healthchange=healthchange, coinsgained=coinsgained, monster=monster)
 
+#TODO ADD TO INVENTORY
+@app.route("/fish")
+def fish():
+    if not current_user.is_authenticated:
+        flash("Please login before trying to play the game.")
+        return redirect(url_for('home'))
+    fish_ammount = random.randint(1,6)
+    fish_type = random.choice(RPGgame.game.list.fish)
+    # ADD THE FISH TO THE INVENTORY TODO 
+    return render_template("game/fish.html", fish_ammount=fish_ammount, fish_type=fish_type)
+
 
 # ADMIN STUFF LOLLOOLLOL----------------------------------------------------------------------------
 @app.route("/change/<type>/<int:id>/<ammount>")
