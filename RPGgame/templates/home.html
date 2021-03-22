@@ -9,6 +9,10 @@
 {% if not current_user.is_anonymous %}
 <p>VIDEO GAME TIME</p>
 
+Your name: {{ current_user.name }},
+Your Damage: {{ current_user.attack }},
+Your Defence: {{ current_user.defence }},
+Your Coins: {{ current_user.coins }}
 
 
 

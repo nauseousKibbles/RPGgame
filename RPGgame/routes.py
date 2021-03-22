@@ -32,10 +32,20 @@ def fish():
     if not current_user.is_authenticated:
         flash("Please login before trying to play the game.")
         return redirect(url_for('home'))
-    fish_ammount = random.randint(1,6)
+    
+    fish_ammount = random.choice(RPGgame.game.list.fish_ammount_weight)
+    fish_level = random.choice(RPGgame.game.list.fish_weighted_level)
     fish_type = random.choice(RPGgame.game.list.fish)
-    # ADD THE FISH TO THE INVENTORY TODO 
-    return render_template("game/fish.html", fish_ammount=fish_ammount, fish_type=fish_type)
+
+    # INVENTROY ADDITIONS
+    if fish_level == 1:
+        current_user.level_1_fish += fish_ammount
+    if fish_level == 2:
+        current_user.level_2_fish += fish_ammount
+    if fish_level == 3:
+        current_user.level_3_fish += fish_ammount
+    db.session.commit()
+    return render_template("game/fish.html", fish_ammount=fish_ammount, fish_type=fish_type, fish_level=fish_level)
 
 
 # ADMIN STUFF LOLLOOLLOL----------------------------------------------------------------------------
@@ -65,8 +75,9 @@ def changeinv(item, id, ammount):
 @app.route("/set")
 def set():
     change_user = User.query.get_or_404(1)
-
+    
     change_user.inventory['Health Potions'] = 5
+    
         
 
     db.session.commit()

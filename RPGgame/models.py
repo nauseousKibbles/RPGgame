@@ -4,7 +4,7 @@ from flask_login import UserMixin
 
 
 
-inv = {"Health Potions":1,"Lols":5,"Scss":5,"gfsd":2}
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -22,8 +22,10 @@ class User(db.Model, UserMixin):
     defence = db.Column(db.Integer, default=1)
     coins = db.Column(db.Integer, default=100)
 
-    inventory = db.Column(db.PickleType(), default = inv)
-    
+    #INV SYSTEM
+    level_1_fish = db.Column(db.Integer, default=0)
+    level_2_fish = db.Column(db.Integer, default=1)
+    level_3_fish = db.Column(db.Integer, default=2)
 
     def __repr__(self):
        return f"User('{self.name}', '{self.password}', '{self.id}')"
