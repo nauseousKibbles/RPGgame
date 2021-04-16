@@ -37,6 +37,8 @@
             <li><a class="dropdown-item {% if not current_user.is_authenticated %}disabled{% endif %}" href="{{ url_for('hunt') }}">Hunt</a></li>
             <li><a class="dropdown-item {% if not current_user.is_authenticated %}disabled{% endif %}" href="{{ url_for('hunt') }}">Chop</a></li>
             <li><a class="dropdown-item {% if not current_user.is_authenticated %}disabled{% endif %}" href="{{ url_for('fish') }}">Fish</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item {% if not current_user.is_authenticated %}disabled{% endif %}" href="{{ url_for('shop') }}">Shop</a></li>
             </ul>
 
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

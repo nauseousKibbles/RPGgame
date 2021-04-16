@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+
+<h3>Name: {{ current_user.name }} | Coins: {{ current_user.coins }}</h3>
+
+<!-- UPGRADING DEFENCE AREA-------------------------------------------------------------------------- -->
+
+
+{% if current_user.defence == 1 %}
+<a class="dropdown-item {% if current_user.coins < 500 %} disabled {% endif %}" href="{{ url_for('shop') }}">Upgrade armor to level 2 | 500 Coins</a>
+{% endif %}
+
+{% if current_user.defence == 2 %}
+<a class="dropdown-item {% if current_user.coins < 500 %} disabled {% endif %}" href="{{ url_for('shop') }}">Upgrade armor to level 3 | 1,000 Coins</a>
+{% endif %}
+
+{% if current_user.defence == 3 %}
+<a class="dropdown-item {% if current_user.coins < 500 %} disabled {% endif %}" href="{{ url_for('shop') }}">Upgrade armor to level 4 | 50,000 Coins</a>
+{% endif %}
+
+{% if current_user.defence == 4 %}
+<a class="dropdown-item {% if current_user.coins < 500 %} disabled {% endif %}" href="{{ url_for('shop') }}">Upgrade armor to level 5 | 100,000 Coins</a>
+{% endif %}
+
+
+<!-- UPGRADING HEALTH AREA-------------------------------------------------------------------- -->
+
+
+
+
+</div>
+{% endblock content %}

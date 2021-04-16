@@ -26,7 +26,7 @@ def hunt():
 
     return render_template("game/hunt.html", healthchange=healthchange, coinsgained=coinsgained, monster=monster)
 
-#TODO ADD TO INVENTORY
+
 @app.route("/fish")
 def fish():
     if not current_user.is_authenticated:
@@ -46,6 +46,14 @@ def fish():
         current_user.level_3_fish += fish_ammount
     db.session.commit()
     return render_template("game/fish.html", fish_ammount=fish_ammount, fish_type=fish_type, fish_level=fish_level)
+
+@app.route("/shop")
+def shop():
+    if not current_user.is_authenticated:
+        flash("Please login before trying to play the game.")
+        return redirect(url_for('home'))
+
+    return render_template("game/shop.html", disabled="")
 
 
 # ADMIN STUFF LOLLOOLLOL----------------------------------------------------------------------------
