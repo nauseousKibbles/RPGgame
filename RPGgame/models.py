@@ -24,13 +24,12 @@ class User(db.Model, UserMixin):
 
     #INV SYSTEM
     level_1_fish = db.Column(db.Integer, default=0)
-    level_2_fish = db.Column(db.Integer, default=1)
-    level_3_fish = db.Column(db.Integer, default=2)
+    level_2_fish = db.Column(db.Integer, default=0)
+    level_3_fish = db.Column(db.Integer, default=0)
 
     def __repr__(self):
        return f"User('{self.name}', '{self.password}', '{self.id}')"
 
-
-
+ 
 
 

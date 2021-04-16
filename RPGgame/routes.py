@@ -72,16 +72,7 @@ def changeinv(item, id, ammount):
     db.session.commit()
     return redirect(url_for('showlist'))
 
-@app.route("/set")
-def set():
-    change_user = User.query.get_or_404(1)
-    
-    change_user.inventory['Health Potions'] = 5
-    
-        
 
-    db.session.commit()
-    return redirect(url_for('showlist'))
 # ------------------------------------------------------------------------------------------------------
 # ONLY BORING STUFF BEYOND THIS POINT WARNING!!!!!! WARNING!!!!! -------------------------------------
 @app.route("/")
