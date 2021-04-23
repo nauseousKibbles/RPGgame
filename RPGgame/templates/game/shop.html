@@ -2,29 +2,42 @@
 {% block content %}
 <div class="container">
 
-<h3>Name: {{ current_user.name }} | Coins: {{ current_user.coins }}</h3>
+<h3>Name: {{ current_user.name }} | Coins: {{ current_user.coins }} | Defence: {{ current_user.defence }} | Attack: {{ current_user.attack }}</h3>
 
 <!-- UPGRADING DEFENCE AREA-------------------------------------------------------------------------- -->
-
+<h3>Upgrade defence: </h3>
 
 {% if current_user.defence == 1 %}
-<a class="btn btn-primary {% if current_user.coins < 500 %} disabled {% endif %}" href="{{ url_for('shop') }}">Upgrade armor to level 2 | 500 Coins</a>
+<a class="btn btn-primary {% if current_user.coins < ammount.defence_level_2_cost %} disabled {% endif %}" href="{{ url_for('buy', item='level2defence') }}">Upgrade armor to level 2 | {{ ammount.defence_level_2_cost }} Coins</a>
 {% endif %}
 
 {% if current_user.defence == 2 %}
-<a class="btn btn-primary {% if current_user.coins < 500 %} disabled {% endif %}" href="{{ url_for('shop') }}">Upgrade armor to level 3 | 1,000 Coins</a>
+<a class="btn btn-primary {% if current_user.coins < ammount.defence_level_3_cost %} disabled {% endif %}" href="{{ url_for('buy', item='level3defence') }}">Upgrade armor to level 3 | {{ ammount.defence_level_3_cost }} Coins</a>
 {% endif %}
 
 {% if current_user.defence == 3 %}
-<a class="btn btn-primary {% if current_user.coins < 500 %} disabled {% endif %}" href="{{ url_for('shop') }}">Upgrade armor to level 4 | 50,000 Coins</a>
+<a class="btn btn-primary {% if current_user.coins < ammount.defence_level_4_cost %} disabled {% endif %}" href="{{ url_for('buy', item='level4defence') }}">Upgrade armor to level 4 | {{ ammount.defence_level_4_cost }} Coins</a>
 {% endif %}
 
 {% if current_user.defence == 4 %}
-<a class="btn btn-primary {% if current_user.coins < 500 %} disabled {% endif %}" href="{{ url_for('shop') }}">Upgrade armor to level 5 | 100,000 Coins</a>
+<a class="btn btn-primary {% if current_user.coins < ammount.defence_level_5_cost %} disabled {% endif %}" href="{{ url_for('buy', item='level5defence') }}">Upgrade armor to level 5 | {{ ammount.defence_level_5_cost }} Coins</a>
+{% endif %}
+
+{% if current_user.defence == 5 %}
+<a class="btn btn-primary {% if current_user.coins < ammount.defence_level_6_cost %} disabled {% endif %}" href="{{ url_for('buy', item='level6defence') }}">Upgrade armor to level 6 | {{ ammount.defence_level_6_cost }} Coins</a>
+{% endif %}
+
+{% if current_user.defence == 6 %}
+<a class="btn btn-primary {% if current_user.coins < ammount.defence_level_7_cost %} disabled {% endif %}" href="{{ url_for('buy', item='level7defence') }}">Upgrade armor to level 7 | {{ ammount.defence_level_7_cost }} Coins</a>
+{% endif %}
+
+{% if current_user.defence == 7 %}
+<p>NO MORE UPGRADES</p>
 {% endif %}
 
 
-<!-- UPGRADING HEALTH AREA-------------------------------------------------------------------- -->
+<!-- UPGRADING ATTACK AREA-------------------------------------------------------------------- -->
+<h3>Upgrade attack: </h3>
 
 
 

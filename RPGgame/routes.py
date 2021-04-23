@@ -47,13 +47,52 @@ def fish():
     db.session.commit()
     return render_template("game/fish.html", fish_ammount=fish_ammount, fish_type=fish_type, fish_level=fish_level)
 
+# SHOP -------------
+
+
 @app.route("/shop")
 def shop():
+    ammount = RPGgame.game.list
     if not current_user.is_authenticated:
         flash("Please login before trying to play the game.")
         return redirect(url_for('home'))
 
-    return render_template("game/shop.html", disabled="")
+    return render_template("game/shop.html", ammount=ammount)
+
+@app.route("/buy/<item>")
+def buy(item):
+    ammount = RPGgame.game.list
+    # Defence Checks ----------------------------------------------
+    if item == "level2defence" and current_user.coins >= ammount.defence_level_2_cost:
+        current_user.defence = 2
+        current_user.coins = current_user.coins - ammount.defence_level_2_cost
+    
+    if item == "level3defence" and current_user.coins >= ammount.defence_level_3_cost:
+        current_user.defence = 3
+        current_user.coins = current_user.coins - ammount.defence_level_3_cost
+
+    if item == "level4defence" and current_user.coins >= ammount.defence_level_4_cost:
+        current_user.defence = 4
+        current_user.coins = current_user.coins - ammount.defence_level_4_cost
+
+    if item == "level5defence" and current_user.coins >= ammount.defence_level_5_cost:
+        current_user.defence = 5
+        current_user.coins = current_user.coins - ammount.defence_level_5_cost
+
+    if item == "level6defence" and current_user.coins >= ammount.defence_level_6_cost:
+        current_user.defence = 6
+        current_user.coins = current_user.coins - ammount.defence_level_6_cost
+
+    if item == "level7defence" and current_user.coins >= ammount.defence_level_7_cost:
+        current_user.defence = 7
+        current_user.coins = current_user.coins - ammount.defence_level_7_cost
+    # ------------------------------------------------------------------------------
+    # Attack Checks
+
+
+
+    db.session.commit()
+    return render_template("game/shop.html", ammount=ammount)
 
 
 # ADMIN STUFF LOLLOOLLOL----------------------------------------------------------------------------
