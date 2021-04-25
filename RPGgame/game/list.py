@@ -14,3 +14,11 @@ defence_level_4_cost = 5000
 defence_level_5_cost = 20000
 defence_level_6_cost = 40000
 defence_level_7_cost = 80000
+
+
+attack_level_2_cost = 500
+attack_level_3_cost = 1000
+attack_level_4_cost = 5000
+attack_level_5_cost = 20000
+attack_level_6_cost = 40000
+attack_level_7_cost = 80000

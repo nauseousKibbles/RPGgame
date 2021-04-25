@@ -88,6 +88,29 @@ def buy(item):
         current_user.coins = current_user.coins - ammount.defence_level_7_cost
     # ------------------------------------------------------------------------------
     # Attack Checks
+    if item == "level2attack" and current_user.coins >= ammount.attack_level_2_cost:
+        current_user.attack = 2
+        current_user.coins = current_user.coins - ammount.attack_level_2_cost
+    
+    if item == "level3attack" and current_user.coins >= ammount.attack_level_3_cost:
+        current_user.attack = 3
+        current_user.coins = current_user.coins - ammount.attack_level_3_cost
+
+    if item == "level4attack" and current_user.coins >= ammount.attack_level_4_cost:
+        current_user.attack = 4
+        current_user.coins = current_user.coins - ammount.attack_level_4_cost
+
+    if item == "level5attack" and current_user.coins >= ammount.attack_level_5_cost:
+        current_user.attack = 5
+        current_user.coins = current_user.coins - ammount.attack_level_5_cost
+
+    if item == "level6attack" and current_user.coins >= ammount.attack_level_6_cost:
+        current_user.attack = 6
+        current_user.coins = current_user.coins - ammount.attack_level_6_cost
+
+    if item == "level7attack" and current_user.coins >= ammount.attack_level_7_cost:
+        current_user.attack = 7
+        current_user.coins = current_user.coins - ammount.attack_level_7_cost
 
 
 

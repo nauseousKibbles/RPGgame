@@ -39,7 +39,33 @@
 <!-- UPGRADING ATTACK AREA-------------------------------------------------------------------- -->
 <h3>Upgrade attack: </h3>
 
+{% if current_user.attack == 1 %}
+<a class="btn btn-primary {% if current_user.coins < ammount.attack_level_2_cost %} disabled {% endif %}" href="{{ url_for('buy', item='level2attack') }}">Upgrade attack to level 2 | {{ ammount.attack_level_2_cost }} Coins</a>
+{% endif %}
 
+{% if current_user.attack == 2 %}
+<a class="btn btn-primary {% if current_user.coins < ammount.attack_level_3_cost %} disabled {% endif %}" href="{{ url_for('buy', item='level3attack') }}">Upgrade attack to level 3 | {{ ammount.attack_level_3_cost }} Coins</a>
+{% endif %}
+
+{% if current_user.attack == 3 %}
+<a class="btn btn-primary {% if current_user.coins < ammount.attack_level_4_cost %} disabled {% endif %}" href="{{ url_for('buy', item='level4attack') }}">Upgrade attack to level 4 | {{ ammount.attack_level_4_cost }} Coins</a>
+{% endif %}
+
+{% if current_user.attack == 4 %}
+<a class="btn btn-primary {% if current_user.coins < ammount.attack_level_5_cost %} disabled {% endif %}" href="{{ url_for('buy', item='level5attack') }}">Upgrade attack to level 5 | {{ ammount.attack_level_5_cost }} Coins</a>
+{% endif %}
+
+{% if current_user.attack == 5 %}
+<a class="btn btn-primary {% if current_user.coins < ammount.attack_level_6_cost %} disabled {% endif %}" href="{{ url_for('buy', item='level6attack') }}">Upgrade attack to level 6 | {{ ammount.attack_level_6_cost }} Coins</a>
+{% endif %}
+
+{% if current_user.attack == 6 %}
+<a class="btn btn-primary {% if current_user.coins < ammount.attack_level_7_cost %} disabled {% endif %}" href="{{ url_for('buy', item='level7attack') }}">Upgrade attack to level 7 | {{ ammount.attack_level_7_cost }} Coins</a>
+{% endif %}
+
+{% if current_user.attack == 7 %}
+<p>NO MORE UPGRADES</p>
+{% endif %}
 
 
 </div>
